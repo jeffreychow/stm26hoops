@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6th Grade Girls Basketball — Coaching Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --surface2: #f2f0eb;
+    --border: rgba(0,0,0,0.09);
+    --border-med: rgba(0,0,0,0.15);
+    --text: #1a1814;
+    --text-2: #5a5750;
+    --text-3: #9a9590;
+    --radius: 12px;
+    --radius-sm: 7px;
+
+    --blue-bg: #e8f1fd; --blue-text: #1a4f9a; --blue-mid: #3b7dd8;
+    --teal-bg: #e2f5ef; --teal-text: #0d6b50; --teal-mid: #18a077;
+    --amber-bg: #fef0d8; --amber-text: #7a4a08; --amber-mid: #d4850e;
+    --coral-bg: #fdeee9; --coral-text: #8c3518; --coral-mid: #d05530;
+    --purple-bg: #eeecff; --purple-text: #4a3fb0; --purple-mid: #7068d8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131210;
+      --surface: #1e1c19;
+      --surface2: #27241f;
+      --border: rgba(255,255,255,0.08);
+      --border-med: rgba(255,255,255,0.14);
+      --text: #edeae4;
+      --text-2: #9a9590;
+      --text-3: #6a6560;
+
+      --blue-bg: #0d2a50; --blue-text: #7aaef0; --blue-mid: #3b7dd8;
+      --teal-bg: #063328; --teal-text: #4ecba0; --teal-mid: #18a077;
+      --amber-bg: #3a2005; --amber-text: #f0b040; --amber-mid: #d4850e;
+      --coral-bg: #3a1408; --coral-text: #f08060; --coral-mid: #d05530;
+      --purple-bg: #201b58; --purple-text: #9e95f0; --purple-mid: #7068d8;
+    }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .header-title span {
+    color: var(--coral-mid);
+  }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  .header-deco {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 40px solid var(--coral-bg);
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* Main layout */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Habits strip */
+  .habits-section {}
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+
+  .habits-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .habit-pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+  }
+
+  .hp-blue   { background: var(--blue-bg);   color: var(--blue-text);   border-color: rgba(59,125,216,0.2); }
+  .hp-teal   { background: var(--teal-bg);   color: var(--teal-text);   border-color: rgba(24,160,119,0.2); }
+  .hp-amber  { background: var(--amber-bg);  color: var(--amber-text);  border-color: rgba(212,133,14,0.2); }
+  .hp-coral  { background: var(--coral-bg);  color: var(--coral-text);  border-color: rgba(208,85,48,0.2); }
+  .hp-purple { background: var(--purple-bg); color: var(--purple-text); border-color: rgba(112,104,216,0.2); }
+
+  /* Section divider */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+
+  /* Card grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+    transition: opacity 0.15s;
+    opacity: 0.6;
+  }
+
+  .card.offense::before { background: var(--blue-mid); }
+  .card.defense::before { background: var(--teal-mid); }
+  .card.comm::before    { background: var(--coral-mid); }
+
+  .card:hover {
+    border-color: var(--border-med);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    transform: translateY(-1px);
+  }
+
+  .card:active { transform: translateY(0); }
+
+  .codeword {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .cw-blue   { background: var(--blue-bg);   color: var(--blue-text); }
+  .cw-teal   { background: var(--teal-bg);   color: var(--teal-text); }
+  .cw-amber  { background: var(--amber-bg);  color: var(--amber-text); }
+  .cw-coral  { background: var(--coral-bg);  color: var(--coral-text); }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .drill-chip {
+    font-size: 11px;
+    color: var(--text-3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .drill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border-med);
+    flex-shrink: 0;
+  }
+
+  .drill-dot.active { background: var(--teal-mid); }
+
+  .tap-hint {
+    position: absolute;
+    bottom: 10px; right: 12px;
+    font-size: 10px;
+    color: var(--text-3);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .card:hover .tap-hint { opacity: 1; }
+
+  /* Modal */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border-med);
+    max-width: 540px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 1.75rem;
+    position: relative;
+    animation: modal-in 0.2s ease;
+  }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.97) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: sticky;
+    float: right;
+    top: 0;
+    margin: -0.25rem -0.25rem 0.5rem 0.5rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.1s;
+    z-index: 10;
+  }
+
+  .modal-close:hover { background: var(--border); }
+
+  .modal-cw {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .modal-purpose {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-h {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+
+  .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+  }
+
+  .steps li {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+    padding: 9px 12px 9px 34px;
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .steps li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-3);
+  }
+
+  .chaos-box {
+    background: var(--amber-bg);
+    border: 1px solid rgba(212,133,14,0.25);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 1.25rem;
+  }
+
+  .chaos-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-text);
+    margin-bottom: 5px;
+  }
+
+  .chaos-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .habit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .htag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+    background: var(--surface);
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .main { padding: 1.5rem 1rem 3rem; }
+    .header { padding: 1.5rem 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-deco"></div>
+  <div class="header-inner">
+    <div class="header-eyebrow">Coaching Framework · 6th Grade Girls Basketball</div>
+    <h1 class="header-title">Triggers &amp; <span>Advantages</span></h1>
+    <p class="header-sub">Simple code words and game-like drills with built-in chaos — so players build real habits, not just game-day instructions.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Habits -->
+  <div class="habits-section">
+    <div class="section-label">Core habits — every practice</div>
+    <div class="habits-row">
+      <span class="habit-pill hp-blue">Eyes up on fast break</span>
+      <span class="habit-pill hp-teal">Hands up on defense</span>
+      <span class="habit-pill hp-amber">Paint touch when possible</span>
+      <span class="habit-pill hp-coral">Find space quickly off-ball</span>
+      <span class="habit-pill hp-purple">Shot ready on catch</span>
+    </div>
+  </div>
+
+  <!-- Offense -->
+  <div>
+    <div class="section-divider" style="margin-bottom: 12px;">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Offense — take every opportunity</div>
+      <div class="section-divider-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card offense" onclick="openModal('trigger')" role="button" tabindex="0">
+        <span class="codeword cw-blue">TRIGGER</span>
+        <div class="card-name">Find the trigger fast</div>
+        <div class="card-desc">Attack before the defense gets set. DHO, pick-and-roll, drive, cutter, post mismatch.</div>
+        <div class="drill-chip"><span class="drill-dot active"></span> 10-sec shot clock drill</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+      <div class="card offense" onclick="openModal('collapse')" role="button" tabindex="0">
+        <span class="codeword cw-blue">COLLAPSE</span>
+        <div class="card-name">Keep the advantage alive</div>
+        <div class="card-desc">Defense collapses — move the ball quickly, find the open player, shoot or drive.</div>
+        <div class="drill-chip"><span class="drill-dot active"></span> 4v3 / 5v4 overload drill</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+      <div class="card offense" onclick="openModal('fastbreak')" role="button" tabindex="0">
+        <span class="codeword cw-amber">EYES UP</span>
+        <div class="card-name">Fast break decision</div>
+        <div class="card-desc">Look ahead immediately on the rebound or outlet. Push pace, read the numbers advantage.</div>
+        <div class="drill-chip"><span class="drill-dot active"></span> Fast break chaos drill</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Defense -->
+  <div>
+    <div class="section-divider" style="margin-bottom: 12px;">
+      <div class="section-divider-line"></div>
+      <div class="section-divider-label">Defense — positioning &amp; rotations</div>
+      <div class="section-divider-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card defense" onclick="openModal('closeout')" role="button" tabindex="0">
+        <span class="codeword cw-teal">CLOSE</span>
+        <div class="card-name">Closeout + contest</div>
+        <div class="card-desc">Sprint, chop steps, hands up. Shot-ready attackers need a real challenge.</div>
+        <div class="drill-chip"><span class="drill-dot active"></span> Closeout 1v1 drill</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+      <div class="card defense" onclick="openModal('rotate')" role="button" tabindex="0">
+        <span class="codeword cw-teal">ROTATE</span>
+        <div class="card-name">Help &amp; rotate</div>
+        <div class="card-desc">Call "help!" when a driver beats the first defender. Rotate and recover together.</div>
+        <div class="drill-chip"><span class="drill-dot active"></span> Shell drill (build-up)</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+      <div class="card comm" onclick="openModal('talk')" role="button" tabindex="0">
+        <span class="codeword cw-coral">TALK</span>
+        <div class="card-name">Constant communication</div>
+        <div class="card-desc">"Ball!" "Help!" "I got your back!" — silence means broken defense.</div>
+        <div class="drill-chip"><span class="drill-dot"></span> Verbal rule in all scrimmages</div>
+        <div class="tap-hint">tap to expand →</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  6th Grade Girls Basketball · Coaching Framework
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const drills = {
+  trigger: {
+    cw: 'TRIGGER', cwClass: 'cw-blue',
+    title: 'Find the trigger fast',
+    purpose: 'Scoring starts by creating a moment where the defense has to react. Get into a trigger quickly — before they get set — and force a collapse. The quicker the trigger, the less time defense has to organize.',
+    steps: [
+      'Set up 5v5 (or 4v4) half-court with a 10-second shot clock.',
+      'Offense must initiate a trigger within 10 seconds: drive, DHO, pick-and-roll, skip to post mismatch, or pass to a cutting player.',
+      'If no trigger is found in 10 sec → turnover. Reset.',
+      'After each possession: coach names what trigger was used (or missed).',
+      'Progress: shorten to 7 sec once they get comfortable.'
+    ],
+    chaos: 'Vary the starting position (top of key, wing, corner) so offense can\'t pre-plan and must read the defense live. Randomly add or remove a defender mid-set.',
+    habits: ['Find space quickly off-ball', 'Shot ready on catch', 'Paint touch when possible']
+  },
+  collapse: {
+    cw: 'COLLAPSE', cwClass: 'cw-blue',
+    title: 'Keep the advantage alive',
+    purpose: 'Once triggered, the defense collapses — that creates open players. The offense must move the ball before the defense recovers. Every pass is a decision: shoot, drive, or kick again. "Move the ball quickly" becomes instinct, not an instruction.',
+    steps: [
+      'Set up 4v3 (offense has extra player) or 5v4.',
+      'Coach is the extra offensive player — they drive and kick every possession to guarantee a collapse.',
+      'Offense receives the kick pass and must quickly decide: shoot if open, drive if the closeout is too aggressive, or re-kick.',
+      'Defense reacts and recovers — this builds rotation habits for them too.',
+      'Call "COLLAPSE!" loudly when the driver kicks — builds the verbal cue habit.'
+    ],
+    chaos: 'Change which player the coach kicks to each time. Add a 3-second shot clock on the catch. Occasionally don\'t kick — make offense read whether to finish or kick.',
+    habits: ['Eyes up on fast break', 'Shot ready on catch', 'Find space quickly off-ball']
+  },
+  fastbreak: {
+    cw: 'EYES UP', cwClass: 'cw-amber',
+    title: 'Fast break decisions',
+    purpose: 'On a rebound or steal, the first habit is eyes up — look ahead before you dribble. See the numbers advantage and push before the defense gets back. This habit is built through repetition; they\'ll forget unless we do it consistently.',
+    steps: [
+      'Coach holds ball at half court. Designates a "rebounder" and 2–3 runners.',
+      'Coach throws ball off backboard. Rebounder gets it and immediately looks up.',
+      'Runners have already pushed ahead — rebounder makes the outlet or pushes it themselves.',
+      'Vary: throw the ball to different spots (left, right, long) to change who gets it and which lane opens.',
+      'Finish at the rim — always. No pull-up mid-range during this drill.'
+    ],
+    chaos: 'Add 1–2 defenders who release on the throw. Vary how many defenders trail. Forces the fast-break decision under real pressure: push or pull back?',
+    habits: ['Eyes up on fast break', 'Paint touch when possible']
+  },
+  closeout: {
+    cw: 'CLOSE', cwClass: 'cw-teal',
+    title: 'Closeout + contest',
+    purpose: 'Shot-ready players will punish us if we don\'t close out hard and smart. Our skilled players need to learn to attack the close-out — so defenders need to practice arriving under control with active hands.',
+    steps: [
+      '1v1 closeout drill: offense starts with the ball at the 3pt line, defender starts under the basket.',
+      'Coach/passer throws to offense — defender sprints out with hands high.',
+      'Defender must chop steps before contact range to stop their momentum.',
+      'Offense can shoot, drive left, or drive right.',
+      'Goal for defense: take away the easy shot, make offense beat them off the dribble.'
+    ],
+    chaos: 'Let offense shoot or drive freely — defender must respect both. Add a second offensive player for kick-out to simulate the real collapse and rotate decision.',
+    habits: ['Hands up on defense', 'Shot ready on catch']
+  },
+  rotate: {
+    cw: 'ROTATE', cwClass: 'cw-teal',
+    title: 'Help &amp; rotate',
+    purpose: 'Rotations break down when players watch the ball instead of moving. Build the habit: when someone drives, everyone is already moving. Understanding positioning is the foundation — then rotations happen naturally.',
+    steps: [
+      'Shell drill: 4 offensive players around the perimeter, 4 defenders. No driving yet — practice positioning and movement on ball movement.',
+      'Progress: allow one dribble drive. The two nearest defenders must rotate — one stops the ball, one covers the empty spot.',
+      'Add a rotation call: "ROTATE!" is said by the helper, not the person getting beaten.',
+      'Progress: full 5v5 live. Count how many times defense communicates in each possession.'
+    ],
+    chaos: 'Allow skip passes to create long rotations. Add a post player to create a 3rd rotation (help of the helper). Make offense try to find the breakdown systematically.',
+    habits: ['Hands up on defense', 'Find space quickly off-ball']
+  },
+  talk: {
+    cw: 'TALK', cwClass: 'cw-coral',
+    title: 'Constant communication',
+    purpose: 'Silent defense is broken defense. Build the reflex that every player on defense is talking the entire time — before, during, and after a possession. Make it a team identity.',
+    steps: [
+      'Rule in all scrimmages: if coach can\'t hear you, it\'s a defensive violation — offense gets the ball back.',
+      'Required calls: "Ball!" (on ball handler), "Help!" (off-ball helper), "I got your back!" (rotator to first defender).',
+      'After every possession: coach asks "who heard communication?" — not "who played good defense?"',
+      'Make it loud and confident — nervous quiet is the enemy. Praise volume as much as positioning.'
+    ],
+    chaos: 'Run a possession with music or extra noise in the gym. Or have offense run unexpected cuts that only communication can solve — show players that talking actually fixes the problem.',
+    habits: ['Hands up on defense']
+  }
+};
+
+function openModal(id) {
+  const d = drills[id];
+  const steps = d.steps.map((s, i) => `<li data-n="${i+1}">${s}</li>`).join('');
+  const tags = d.habits.map(h => `<span class="htag">${h}</span>`).join('');
+  document.getElementById('modal-body').innerHTML = `
+    <span class="modal-cw ${d.cwClass}">${d.cw}</span>
+    <div class="modal-title">${d.title}</div>
+    <div class="modal-purpose">${d.purpose}</div>
+    <div class="modal-h">Drill setup</div>
+    <ol class="steps">${steps}</ol>
+    <div class="chaos-box">
+      <div class="chaos-label">Built-in chaos</div>
+      <div class="chaos-text">${d.chaos}</div>
+    </div>
+    <div class="modal-h">Habits reinforced</div>
+    <div class="habit-tags">${tags}</div>
+  `;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Keyboard support for cards
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
+</script>
+</body>
+</html>
