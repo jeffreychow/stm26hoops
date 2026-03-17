@@ -440,6 +440,134 @@
     color: var(--text-2);
   }
 
+  /* Notes section */
+  .notes-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .notes-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .note-block {}
+
+  .note-block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+
+  .note-block-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .note-body {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.75;
+  }
+
+  .note-body p + p { margin-top: 0.75em; }
+
+  .big-idea {
+    background: var(--surface2);
+    border-left: 3px solid var(--coral-mid);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .big-idea strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .codeword-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .codeword-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .codeword-row .cw-inline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .codeword-row .cw-def {
+    color: var(--text-2);
+  }
+
+  .practice-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .practice-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+
+  .practice-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-3);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 7px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .insight-box {
+    background: var(--blue-bg);
+    border: 1px solid rgba(59,125,216,0.2);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-top: 10px;
+  }
+
   /* Footer */
   .footer {
     text-align: center;
@@ -473,13 +601,24 @@
 
   <!-- Habits -->
   <div class="habits-section">
-    <div class="section-label">Core habits — every practice</div>
+    <div class="section-label" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <span>Core habits — every practice</span>
+      <span style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--blue-text);"><span style="width:8px;height:8px;border-radius:50%;background:var(--blue-mid);flex-shrink:0;"></span>Offense</span>
+        <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--teal-text);"><span style="width:8px;height:8px;border-radius:50%;background:var(--teal-mid);flex-shrink:0;"></span>Defense</span>
+        <span style="display:flex; align-items:center; gap:5px; font-size:10px; color:var(--purple-text);"><span style="width:8px;height:8px;border-radius:50%;background:var(--purple-mid);flex-shrink:0;"></span>General</span>
+      </span>
+    </div>
     <div class="habits-row">
       <span class="habit-pill hp-blue">Eyes up on fast break</span>
+      <span class="habit-pill hp-blue">Paint touch when possible</span>
+      <span class="habit-pill hp-blue">Find space quickly off-ball</span>
+      <span class="habit-pill hp-blue">Shot ready on catch</span>
+      <span class="habit-pill hp-blue">Scan before receiving</span>
       <span class="habit-pill hp-teal">Hands up on defense</span>
-      <span class="habit-pill hp-amber">Paint touch when possible</span>
-      <span class="habit-pill hp-coral">Find space quickly off-ball</span>
-      <span class="habit-pill hp-purple">Shot ready on catch</span>
+      <span class="habit-pill hp-teal">Active hands &amp; feet on defense</span>
+      <span class="habit-pill hp-teal">Chest absorbs contact</span>
+      <span class="habit-pill hp-purple">Communicate confidently</span>
     </div>
   </div>
 
@@ -555,6 +694,82 @@
     </div>
   </div>
 
+</div>
+
+<div class="notes-section">
+  <div class="notes-inner">
+
+    <div class="note-block">
+      <div class="note-block-label">The concept</div>
+      <div class="note-block-title">What are triggers and advantages?</div>
+      <div class="note-body">
+        <p>Scoring happens when the team is able to "trigger" an advantage by driving and making the defense collapse. Advantages are situations where we have more offensive players than defenders to guard them.</p>
+        <p>Some examples of triggers: throwing the ball ahead on the fast break, running a pick and roll, attacking off a dribble hand-off, passing to a cutter, passing to a mismatch in the post, or simply going iso and breaking down the defender. These are all situations that give us an open shot or force defenders to help — leaving someone else open.</p>
+        <p>We want to find a trigger quickly and create the advantage by making the defense collapse.</p>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <div class="note-block-label">The big idea</div>
+      <div class="big-idea">
+        <strong>Offense</strong> wins by finding a trigger fast (before the defense is set) and then keeping the advantage alive with quick ball movement.<br>
+        <strong>Defense</strong> wins by taking away easy looks through communication and rotations — not individual heroics.
+      </div>
+    </div>
+
+    <div class="note-block">
+      <div class="note-block-label">Using the code words during a game</div>
+      <div class="note-body" style="margin-bottom: 10px;">Call out a single word from the bench — these replace the longer instructions you're currently yelling.</div>
+      <div class="codeword-list">
+        <div class="codeword-row">
+          <span class="cw-inline cw-blue">TRIGGER</span>
+          <span class="cw-def">Find your action now, stop standing.</span>
+        </div>
+        <div class="codeword-row">
+          <span class="cw-inline cw-blue">COLLAPSE</span>
+          <span class="cw-def">Ball is kicked, someone is open — move it.</span>
+        </div>
+        <div class="codeword-row">
+          <span class="cw-inline cw-amber">EYES UP</span>
+          <span class="cw-def">Look ahead before you dribble — push the pace.</span>
+        </div>
+        <div class="codeword-row">
+          <span class="cw-inline cw-teal">ROTATE</span>
+          <span class="cw-def">Help is needed — shift now.</span>
+        </div>
+        <div class="codeword-row">
+          <span class="cw-inline cw-coral">TALK</span>
+          <span class="cw-def">Communicate on defense. Self-explanatory.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <div class="note-block-label">Suggested practice sequence</div>
+      <div class="practice-steps">
+        <div class="practice-step">
+          <span class="practice-step-num">01</span>
+          <span><strong style="color:var(--text);font-weight:600;">Fast break chaos drill</strong> (2–3 min, every practice) — builds the eyes-up reflex. Always start here.</span>
+        </div>
+        <div class="practice-step">
+          <span class="practice-step-num">02</span>
+          <span><strong style="color:var(--text);font-weight:600;">10-sec shot clock</strong> — pressures trigger-finding before the defense gets set.</span>
+        </div>
+        <div class="practice-step">
+          <span class="practice-step-num">03</span>
+          <span><strong style="color:var(--text);font-weight:600;">4v3 collapse reps</strong> — builds the feel for what an advantage looks like and how to exploit it.</span>
+        </div>
+        <div class="practice-step">
+          <span class="practice-step-num">04</span>
+          <span><strong style="color:var(--text);font-weight:600;">Live 5v5 with code words</strong> — coaches call from the sideline. The goal: eventually players are calling them to each other.</span>
+        </div>
+      </div>
+      <div class="insight-box">
+        "Move the ball quickly" is a symptom of not understanding <em>why</em> to move it. Once players feel what a defensive collapse actually looks like from the 4v3 drill, the fast passing becomes instinct rather than an instruction.
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="footer">
